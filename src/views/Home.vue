@@ -1,11 +1,14 @@
 <template>
-  <div class="home">
+  <div class="home container-fluid">
     <h1>MJ Blog</h1>
-    <CreateForm />
-
-    <Post />
-
-
+    <div class="row">
+      <div class="col">
+        <CreateForm />
+      </div>
+    </div>
+    <div class="row d-flex justify-content-center">
+      <Post />
+    </div>
   </div>
 </template>
 

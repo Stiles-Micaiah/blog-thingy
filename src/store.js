@@ -19,30 +19,45 @@ export default new Vuex.Store({
   mutations: {
     setPosts(state, posts = []) {
       state.posts = posts
-
-    },
+    }
+    
   },
   actions: {
     async getPosts({ commit }) {
       let res = await api.get("")
       commit('setPosts', res.data)
+      console.log(res)
     },
 
     async getPost({ commit }, id) {
       let res = await api.get(id)
-      commit('setPost', res.data)
+      commit('setPosts', res.data)
     },
 
-    addPost({ commit, dispatch, state }, MJ) {
-      let post = new Post(MJ)
-      state.post.push(post)
-      api.put(state.post.id, state.post)
+    addPost({ commit, dispatch}, data ) {
+      // let post = new Post(MJ)
+      // state.post.push(post)
+      api.post('', data)
         .then(res => {
-          dispatch('getPost', state.post.id)
+          dispatch('getPosts')
+        
         })
         .catch(err => {
-          state.post.pop()
+          console.error(err)
+        })
+    },
+    deletePost({ commit, dispatch}, data ) {
+      // let post = new Post(MJ)
+      // state.post.push(post)
+      api.delete(data)
+        .then(res => {
+          dispatch('getPosts')
+        
+        })
+        .catch(err => {
+          console.error(err)
         })
     }
   }
 })
+//state.post.id, ''
