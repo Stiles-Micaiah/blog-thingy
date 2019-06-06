@@ -1,13 +1,11 @@
 <template>
   <div class="home">
     <h1>MJ Blog</h1>
+    <CreateForm />
+
     <Post />
 
-    <div class="d-flex">
-      <div class="dropdown mr-1">
-        <CreateForm />
-      </div>
-    </div>
+
   </div>
 </template>
 

@@ -1,6 +1,6 @@
 <template>
-  <div class="Post">
-    <div class="card mb-3" v-for="post in posts" :key="post.id">
+  <div class="Post d-flex justify-content-center">
+    <div class="card card-803 mb-3" v-for="post in posts" :key="post.id">
       <h3 class="card-header">{{post.title}}</h3>
       <h6>{{post.author}}</h6>
       <img style="height: 200px; width: 100%; display: block;"
@@ -30,11 +30,11 @@
         post: ""
       }
     },
-    methods: {
-      addPost(item) {
-        this.$store.dispatch('addPost', item)
-      }
-    },
+    // methods: {
+    //   addPost(item) {
+    //     this.$store.dispatch('addPost', item)
+    //   }
+    // },
     mounted() {
       this.$store.dispatch("getPosts")
     },
@@ -45,10 +45,12 @@
       }
     }
   }
-  
+
 </script>
 
 
 <style scoped>
-
+  .card-803 {
+    max-width: 75%;
+  }
 </style>
