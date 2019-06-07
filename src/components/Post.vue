@@ -9,8 +9,8 @@
         </div>
 
         <div class="card-body">
-          <button class="btn btn-info rounded-pill card-link">You like this</button>
-          <button @click="deletePost(post._id)" class="btn btn-danger rounded-pill card-link">You like this, but in Red</button>
+          <button class="sketchy-btn sketchy-btn-info rounded-pill ">You like this</button>
+          <button @click="deletePost(post._id)" class="btn btn-danger rounded-pill ">You like this, but in Red</button>
         </div>
         <div style="-webkit-text-fill-color: blueviolet;" class="card-footer text-muted">
           {{post.user}} but in Purple
@@ -55,4 +55,5 @@
   .card-803 {
     max-width: 100%;
   }
+  
 </style>
