@@ -1,12 +1,8 @@
 <template>
   <div class="home container-fluid">
-    <h1>MJ Blog</h1>
-    <div class="row">
-      <div class="col">
-        <CreateForm />
-      </div>
-    </div>
     <div class="row d-flex justify-content-center">
+      <h1 v-if="!posts">Nothing to show from your search, 
+         Maybe try something else?</h1>
       <Post />
     </div>
   </div>
@@ -19,10 +15,20 @@
 
   export default {
     name: 'Home',
+    data() {
+      return {
+
+      }
+    },
     components: {
       Post,
       CreateForm
-    }
+    },
+    computed: {
+      posts() {
+        this.$store.state.posts.data
+      }
+    },
   };
 </script>
 

@@ -20,7 +20,7 @@ export default new Vuex.Store({
     setPosts(state, posts = []) {
       state.posts = posts
     }
-    
+
   },
   actions: {
     async getPosts({ commit }) {
@@ -34,29 +34,41 @@ export default new Vuex.Store({
       commit('setPosts', res.data)
     },
 
-    addPost({ commit, dispatch}, data ) {
+    addPost({ commit, dispatch }, data) {
       // let post = new Post(MJ)
       // state.post.push(post)
       api.post('', data)
         .then(res => {
           dispatch('getPosts')
-        
+
         })
         .catch(err => {
           console.error(err)
         })
     },
-    deletePost({ commit, dispatch}, data ) {
+    deletePost({ commit, dispatch }, data) {
       // let post = new Post(MJ)
       // state.post.push(post)
       api.delete(data)
         .then(res => {
           dispatch('getPosts')
-        
+
         })
         .catch(err => {
           console.error(err)
         })
+    },
+
+    searchByName({ commit, dispatch }, query) {
+      api.get(query)
+        .then(res => {
+          res ? commit('setPosts', res.data) : commit('stePosts', '')
+        })
+        .catch(err => {
+          console.error(err)
+          commit('setPosts', '')
+        })
+
     }
   }
 })

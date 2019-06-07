@@ -13,7 +13,7 @@
             <router-link class="nav-link" to="/about">GitHub<span class="sr-only">(current)</span></router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/about">About</router-link>
+            <router-link class="nav-link" to="/post">Create Post</router-link>
           </li>
           <li class="nav-item">
             <router-link class="nav-link" to="/about">About</router-link>
@@ -22,8 +22,8 @@
             <router-link class="nav-link" to="/about">About</router-link>
           </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Search">
+        <form @submit.prevent="searchPosts" class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" v-model="query" type="text" placeholder="Search">
           <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
         </form>
       </div>
@@ -35,11 +35,20 @@
 <script>
   export default {
     name: 'Navbar',
-data() {
-  return {
-    query: ""
-  }
-}
+    data() {
+      return {
+        query: ""
+      }
+    },
+    methods: {
+      searchPosts() {
+        router.push({ name: 'search', params: { keyword: this.query } })
+        // this.$store.dispatch('searchByName', this.query
+      }
+    },
+    props: {
+      keyword
+    }
   }
 </script>
 
@@ -47,5 +56,19 @@ data() {
 <style scoped>
   a {
     color: #42b983;
+  }
+</style>
+<style>
+  #bg-image-whole-pg {
+    background: none;
+  }
+
+  html {
+    background-image: url('https://www.pixelstalk.net/wp-content/uploads/2014/12/Abstract-Flower-Art-Desktop-Background.jpg');
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-attachment: fixed;
   }
 </style>
