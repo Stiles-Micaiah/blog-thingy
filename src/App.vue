@@ -45,10 +45,12 @@
         router.push({ name: 'search', params: { keyword: this.query } })
         // this.$store.dispatch('searchByName', this.query
       }
-    },
-    props: {
-      keyword
     }
+
+    // ,
+    // props: {
+    //   keyword /////////ANCHOR this was the issue!!!!
+    // }
   }
 </script>
 
