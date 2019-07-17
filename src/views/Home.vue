@@ -1,8 +1,8 @@
 <template>
   <div class="home container-fluid">
     <div class="row d-flex justify-content-center">
-      <h1 v-if="!posts">Nothing to show from your search, 
-         Maybe try something else?</h1>
+      <!-- <h1 v-if="!posts">Nothing to show from your search, 
+         Maybe try something else?</h1> -->
       <Post />
     </div>
   </div>
